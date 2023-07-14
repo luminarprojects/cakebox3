@@ -1,0 +1,81 @@
+<!-- Product section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={{cake.image}} alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">{{cake.occasion}}</div>
+                <h1 class="display-5 fw-bolder">{{cake.name}}</h1>
+                <div class="fs-5 mb-5">
+                    <span>{{cake.price|currency:'INR'}}</span>
+                   
+                </div>
+                <p class="lead">shape:{{cake.shape}}</p>
+                <p class="lead">weight:{{cake.weight}}</p>
+                <p class="lead">layer:{{cake.layers}}</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" (click)="cartAdd()">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+
+
+                    <!-- modal-->
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add your Review
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add your Review</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" [formGroup]="reviewForm" (ngSubmit)="addReview()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Enter your Comment" formControlName="comment">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Enter your Rating" formControlName="rating">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+
+            </form>
+        
+        </div>
+      
+      </div>
+    </div>
+  </div>
+<!-- end modal-->
+ 
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+      </section>
+<section class="py-5">
+    <div class="row" *ngFor="let r of cake.reviews">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="card" style="width:70%">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{r.user}}</li>
+                  <li class="list-group-item">{{r.comment}}</li>
+                  <li class="list-group-item">{{r.rating}}</li>
+
+                </ul>
+              </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+</section>
